@@ -52,16 +52,16 @@ class Task
     {
         $status = $this->currentStatus;
         switch ($action) {
-            case 'cancel':
+            case self::ACTION_CANCEL:
                 $status = self::STATUS_CANCELLED;
                 break;
-            case 'accept':
+            case self::ACTION_ACCEPT:
                 $status = self::STATUS_COMPLETED;
                 break;
-            case 'respond':
+            case self::ACTION_RESPOND:
                 $status = self::STATUS_WORKING;
                 break;
-            case 'deny':
+            case self::ACTION_DENY:
                 $status = self::STATUS_FAILED;
                 break;
         }
@@ -72,11 +72,11 @@ class Task
     {
         $actions = [];
         switch ($status) {
-            case 'new':
+            case self::STATUS_NEW:
                 $actions[] = self::ACTION_CANCEL;
                 $actions[] = self::ACTION_RESPOND;
                 break;
-            case 'working':
+            case self::STATUS_WORKING:
                 $actions[] = self::ACTION_ACCEPT;
                 $actions[] = self::ACTION_DENY;
                 break;
