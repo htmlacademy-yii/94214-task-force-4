@@ -1,6 +1,8 @@
 <?php
+require_once '../vendor/autoload.php';
+use Taskforce\Models\Task;
+
 header("Content-Type: text/plain");
-require_once '../classes/Task.php';
 
 $idCustomer = 1;
 $idExecutor = 1;
