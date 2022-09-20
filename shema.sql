@@ -35,7 +35,8 @@ CREATE TABLE users (
 /* Категории заданий */
 CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
+    name VARCHAR(100) NOT NULL,
+    alias VARCHAR(100) NOT NULL
 );
 
 /* Задания */
@@ -73,7 +74,7 @@ CREATE TABLE responses (
     executor_id INT NOT NULL,
     task_id INT NOT NULL,
     comment CHAR,
-    price CHAR,
+    price INT,
     FOREIGN KEY (executor_id) REFERENCES users(id),
     FOREIGN KEY (task_id) REFERENCES tasks(id)
 );
@@ -86,6 +87,7 @@ CREATE TABLE reviews (
     task_id INT NOT NULL,
     comment CHAR,
     grade INT,
+    creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (customer_id) REFERENCES users(id),
     FOREIGN KEY (executor_id) REFERENCES users(id),
     FOREIGN KEY (task_id) REFERENCES tasks(id)
