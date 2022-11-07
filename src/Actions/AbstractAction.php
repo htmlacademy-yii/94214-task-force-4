@@ -16,5 +16,5 @@ abstract class AbstractAction
         return $this->title;
     }
 
-    abstract public function checkRight(Task $task, int $currentUser): bool;
+    abstract public function checkRight(int $idCustomer, int $idExecutor, int $idCurrentUser): bool;
 }
