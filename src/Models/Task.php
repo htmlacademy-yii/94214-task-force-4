@@ -3,18 +3,16 @@ namespace Taskforce\Models;
 
 class Task
 {
-    // Статусы заданий
+    // Статусы
     const STATUS_NEW = 'new';
     const STATUS_CANCELLED = 'cancelled';
     const STATUS_WORKING = 'working';
     const STATUS_COMPLETED = 'completed';
     const STATUS_FAILED = 'failed';
 
-    // Действия заказчика
+    // Действия
     const ACTION_CANCEL = 'cancel';
     const ACTION_ACCEPT = 'accept';
-
-    // Действия исполнителя
     const ACTION_RESPOND = 'respond';
     const ACTION_DENY = 'deny';
 
@@ -43,7 +41,7 @@ class Task
     {
         return [
             self::ACTION_CANCEL => 'Отменить',
-            self::ACTION_ACCEPT => 'Принять', // в ТЗ действие называется "Выполнено", но это контринтуитивно, так как действие по определению должно быть глаголом
+            self::ACTION_ACCEPT => 'Принять',
             self::ACTION_RESPOND => 'Откликнуться',
             self::ACTION_DENY => 'Отказаться',
         ];
