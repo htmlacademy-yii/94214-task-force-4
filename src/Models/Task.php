@@ -1,6 +1,11 @@
 <?php
 namespace Taskforce\Models;
 
+use Taskforce\Actions\ActionCancel;
+use Taskforce\Actions\ActionAccept;
+use Taskforce\Actions\ActionRespond;
+use Taskforce\Actions\ActionDeny;
+
 class Task
 {
     // Статусы
@@ -11,10 +16,10 @@ class Task
     const STATUS_FAILED = 'failed';
 
     // Действия
-    const ACTION_CANCEL = 'cancel';
-    const ACTION_ACCEPT = 'accept';
-    const ACTION_RESPOND = 'respond';
-    const ACTION_DENY = 'deny';
+    const ACTION_CANCEL = ActionCancel::class;
+    const ACTION_ACCEPT = ActionAccept::class;
+    const ACTION_RESPOND = ActionRespond::class;
+    const ACTION_DENY = ActionDeny::class;
 
     private $idCustomer;
     private $idExecutor;
@@ -24,6 +29,16 @@ class Task
         $this->idCustomer = $idCustomer;
         $this->idExecutor = $idExecutor;
         $this->currentStatus = $currentStatus;
+    }
+
+    public function getIdCustomer()
+    {
+        return $this->idCustomer;
+    }
+
+    public function getIdExecutor()
+    {
+        return $this->idExecutor;
     }
 
     public function getStatusesMap()
@@ -40,10 +55,10 @@ class Task
     public function getActionsMap()
     {
         return [
-            self::ACTION_CANCEL => 'Отменить',
-            self::ACTION_ACCEPT => 'Принять',
-            self::ACTION_RESPOND => 'Откликнуться',
-            self::ACTION_DENY => 'Отказаться',
+            self::ACTION_CANCEL => ActionCancel::getTitle(),
+            self::ACTION_ACCEPT => ActionAccept::getTitle(),
+            self::ACTION_RESPOND => ActionRespond::getTitle(),
+            self::ACTION_DENY => ActionDeny::getTitle(),
         ];
     }
 
